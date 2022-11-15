@@ -1,14 +1,29 @@
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
+//components
 import Login from "./components/Login";
 import List from "./components/List"
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Results from './components/Results';
+import Favorites from './components/Favorites';
+import Details from './components/Details';
 //styles
 import './css/bootstrap.min.css'
-import Details from './components/Details';
-import Results from './components/Results';
 
 function App() {
+
+  const [favorites, setFavorites] = useState([])
+
+    useEffect(() => {
+        const movieLocal = localStorage.getItem('favs');
+        if(movieLocal !== null) {
+            const favMovie = JSON.parse(movieLocal);
+            setFavorites(favMovie);
+        }
+    }, [])
+
+  const addOrRemoveMovieFav = e => {
 
   const saveMovie = localStorage.getItem('favs');
   
@@ -20,8 +35,6 @@ function App() {
     localMoviesFavs = JSON.parse(saveMovie);
   }
 
-
-  const addOrRemoveMovieFav = e => {
     // extraemos los valores del evento del btn
     const btn = e.currentTarget;
     const parent = btn.parentElement;
@@ -33,14 +46,16 @@ function App() {
       id: btn.dataset.movieId
     }
     
-    let existMovie = localMoviesFavs.find(movie => movie.id === movieData.id );
+    let existMovie = localMoviesFavs.find( movie => movie.id === movieData.id );
     
     if (!existMovie){
-      localMoviesFavs.push(movieData)
-      localStorage.setItem('favs', JSON.stringify(localMoviesFavs))
+      localMoviesFavs.push(movieData);
+      localStorage.setItem('favs', JSON.stringify(localMoviesFavs));
+      setFavorites(existMovie);
     } else { //
-      let removeFav = localMoviesFavs.filter(movie => movie.id !== movieData.id);
-      localStorage.setItem('favs', JSON.stringify(removeFav))
+      let removeFav = localMoviesFavs.filter( movie => movie.id !== movieData.id );
+      localStorage.setItem('favs', JSON.stringify(removeFav));
+      setFavorites(removeFav);
     }
   }
 
@@ -52,6 +67,7 @@ function App() {
       <Route path= "/list" element={<List addOrRemoveMovieFav={addOrRemoveMovieFav}/>}/>
       <Route path= "/details" element={<Details/>}/>
       <Route path= "/results" element={<Results/>}/>
+      <Route path= "/favmovie" element={<Favorites favorites={favorites} addOrRemoveMovieFav={addOrRemoveMovieFav}/>}/>
     </Routes>
     <Footer/>
     </>
