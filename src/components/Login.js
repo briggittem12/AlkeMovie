@@ -47,19 +47,33 @@ const Login = () => {
   return (
     <>
     {token && <Navigate to="/list" />}
-    <h2>Inicia Sesión</h2>
-    <form onSubmit={submitHandler}>
+    <h2 className='flex justify-center text-2xl font-bold'>Inicia Sesión</h2>
+    
+    <div className='m-20 flex justify-center'>
+      <div className='flex flex-col justify-center bg-teal-300 w-60 aspect-square'>
+        
+        <div className='mx-3'>
+        <h2 className='font-bold text-center pb-3'>Credenciales de acceso</h2>
+          <p className='font-bold leading-5'>Email: <span className='font-normal'>challenge@alkemy.org</span></p>
+          <p className='font-bold leading-5'>Password: <span className='font-normal'>react</span></p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <form className='flex m-12 flex-col justify-center items-center' onSubmit={submitHandler}>
         <label>
-            <span>Email</span> <br />
-            <input type="text" placeholder="" name="email" />
+            <span className='font-bold'>Email</span> <br />
+            <input className='bg-transparent w-80 border-b-2 border-cyan-900 outline-0' type="text" placeholder="example@example.com" name="email" />
         </label>
         <br />
         <label>
-            <span>Password</span> <br />
-            <input type="password" name="password"/>
+            <span className='font-bold'>Password</span> <br />
+            <input className='bg-transparent w-80 border-b-2 border-cyan-900 outline-0' type="password" name="password"/>
         </label>
         <br/>
-        <button type="submit">Ingresar</button>
+        <button className='border-none p-1 bg-indigo-300' type="submit">Ingresar</button>
     </form>
     </>
   )

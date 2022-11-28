@@ -8,8 +8,8 @@ import Footer from './components/Footer';
 import Results from './components/Results';
 import Favorites from './components/Favorites';
 import Details from './components/Details';
-//styles
-import './css/bootstrap.min.css'
+
+
 
 function App() {
 
@@ -60,8 +60,9 @@ function App() {
   }
 
   return (
-    <>
+    <div className='flex flex-col h-screen'>
     <Header/>
+
     <Routes>
       <Route exact path= "/" element={<Login/>}/>
       <Route path= "/list" element={<List addOrRemoveMovieFav={addOrRemoveMovieFav}/>}/>
@@ -69,8 +70,9 @@ function App() {
       <Route path= "/results" element={<Results/>}/>
       <Route path= "/favmovie" element={<Favorites favorites={favorites} addOrRemoveMovieFav={addOrRemoveMovieFav}/>}/>
     </Routes>
+    
     <Footer/>
-    </>
+    </div>
   );
 }
 

@@ -17,7 +17,7 @@ const Details = () => {
             axios.get(URL)
                 .then(res => setDetails(res.data))
                 .catch(err => console.log(err))
-    }, [setDetails])
+    }, [movieID])
     
     //console.log(details)
 

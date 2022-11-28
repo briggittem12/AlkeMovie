@@ -1,13 +1,12 @@
 
 const Footer = () => {
   return (
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="http://alkemy.org">Alekmy</a></li>
-            </ul>
-        </nav>
-        <p>Copyright</p>
+    <footer className="w-full font-serif bg-gradient-to-r from-sky-500 to-indigo-500 mt-10 ">
+        
+        <div className="flex justify-center p-6">
+            <p><a href="http://alkemy.org">Alekmy</a> Copyright</p>
+            
+        </div>
     </footer>
   )
 }

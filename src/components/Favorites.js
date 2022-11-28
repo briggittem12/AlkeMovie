@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 
 const Favorites = ({ favorites, addOrRemoveMovieFav }) => {
@@ -11,7 +11,7 @@ const Favorites = ({ favorites, addOrRemoveMovieFav }) => {
      {!token && <Navigate to="/" />}
 
         <h1>Favorite's Movies</h1>
-            <div className="row">
+            <div>
 
             {
             favorites.map(movies => {
