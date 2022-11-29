@@ -20,7 +20,7 @@ const Search = () => {
 
 
   return (
-    <form className='flex m-3 justify-center' onSubmit={submitHandler} >
+    <form className='flex m-3 justify-center xs:w-30' onSubmit={submitHandler} >
         <label className='border-none'>
             <input className='bg-transparent p-1 border-b-2 border-cyan-900 outline-0' type="text" name="keyword"  />
         </label>

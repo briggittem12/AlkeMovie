@@ -21,28 +21,28 @@ const List = ({addOrRemoveMovieFav}) => {
   return (
     <>
       {!token && <Navigate to="/" />}
-      <div className="row">
+      <section className='grid'>
 
       {
         moviesList.map(movies => {
           return (
-            <div className="col-3" key={movies.id}>
-              <div className="card">
+            <div className='border-2 ' key={movies.id}>
+              <div className=''>
                 <img src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`} alt="poster" className="card-img-top" />
                   <button onClick={addOrRemoveMovieFav} data-movie-id={movies.id}>f</button>
-                <div className="card-body">
-                  <h5 className="card-title">{movies.title}</h5> 
-                    <p className="card-text">
+                <div className=''>
+                  <h5 className=''>{movies.title}</h5> 
+                    <p className=''>
                       {movies.overview}
                     </p>
-                    <Link to={`/details?movieID=${movies.id}`} className="btn btn-primary">View Details</Link>
+                    <Link to={`/details?movieID=${movies.id}`} className=''>View Details</Link>
                 </div>
               </div>
             </div>
             )
           })
         }
-      </div>
+      </section>
     </>
   )
 }

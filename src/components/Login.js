@@ -45,37 +45,39 @@ const Login = () => {
   let token = sessionStorage.getItem('token');
 
   return (
-    <>
-    {token && <Navigate to="/list" />}
-    <h2 className='flex justify-center text-2xl font-bold'>Inicia Sesión</h2>
-    
-    <div className='m-20 flex justify-center'>
-      <div className='flex flex-col justify-center bg-teal-300 w-60 aspect-square'>
-        
-        <div className='mx-3'>
-        <h2 className='font-bold text-center pb-3'>Credenciales de acceso</h2>
-          <p className='font-bold leading-5'>Email: <span className='font-normal'>challenge@alkemy.org</span></p>
-          <p className='font-bold leading-5'>Password: <span className='font-normal'>react</span></p>
+    <section className='flex justify-center gap-10 h-screen xs:flex-col'>
+        {token && <Navigate to="/list" />}
+      <h2 className='flex text-2xl font-bold xs:justify-center items-center sm:flex-col'>Inicia Sesión</h2>
+      
+      <article className='flex m-6 xs:flex-col gap-6 sm:flex-row justify-around items-center'>
+
+        <div className='flex justify-center'>
+          <div className='flex flex-col justify-center bg-teal-300 w-60 aspect-square'>
+            <div className='mx-3'>
+            <h2 className='font-bold text-center pb-3'>Credenciales de acceso</h2>
+              <p className='font-bold leading-5'>Email: <span className='font-normal'>challenge@alkemy.org</span></p>
+              <p className='font-bold leading-5'>Password: <span className='font-normal'>react</span></p>
+            </div>
+          </div>
         </div>
 
-      </div>
-    </div>
 
-
-    <form className='flex m-12 flex-col justify-center items-center' onSubmit={submitHandler}>
-        <label>
-            <span className='font-bold'>Email</span> <br />
-            <input className='bg-transparent w-80 border-b-2 border-cyan-900 outline-0' type="text" placeholder="example@example.com" name="email" />
-        </label>
-        <br />
-        <label>
-            <span className='font-bold'>Password</span> <br />
-            <input className='bg-transparent w-80 border-b-2 border-cyan-900 outline-0' type="password" name="password"/>
-        </label>
-        <br/>
-        <button className='border-none p-1 bg-indigo-300' type="submit">Ingresar</button>
-    </form>
-    </>
+        <form className='flex flex-col justify-center items-center' onSubmit={submitHandler}>
+            <label>
+                <span className='font-bold'>Email</span> <br />
+                <input className='bg-transparent w-80 border-b-2 border-cyan-900 outline-0' type="text" placeholder="example@example.com" name="email" />
+            </label>
+            <br />
+            <label>
+                <span className='font-bold'>Password</span> <br />
+                <input className='bg-transparent w-80 border-b-2 border-cyan-900 outline-0' type="password" name="password"/>
+            </label>
+            <br/>
+            <button className='border-none p-1 bg-indigo-300' type="submit">Ingresar</button>
+        </form>
+        
+      </article>
+    </section>
   )
 }
 
